@@ -46,21 +46,44 @@
     <div id="control-panel">
         <h3>Panel de Control</h3>
         <div>
+            <h4>Configuración de Boids:</h4>
+            <div>
+                <label>Numero de Boids:</label>
+                <input type="number" id="boids-count" value="1" min="1" max="20">
+            </div>
+            <div>
+                <label>Separación:</label>
+                <input type="number" id="boids-separation" value="10" min="0" max="100" step="0.1">
+            </div>
+            <div>
+                <label>Alineación:</label>
+                <input type="number" id="boids-alignment" value="0.1" min="0" max="1" step="0.1">
+            </div>
+            <div>
+                <label>Cohesión:</label>
+                <input type="number" id="boids-cohesion" value="0.5" min="0" max="1" step="0.1">
+            </div>
+            <div>
+                <label>Velocidad Máxima:</label>
+                <input type="number" id="boids-maxSpeed" value="3" min="0" max="10" step="0.1">
+            </div>
+            <div>
+                <label>Rango de Protección:</label>
+                <input type="number" id="boids-protectRange" value="10" min="0" max="100" step="0.1">
+            </div>
+            <button id="update-boids-config">Actualizar Configuración</button>
+        </div>
+        <div>
             <label>Base (X, Y, Z):</label>
-            <input type="number" id="base-x" value="0" step="0.1">
-            <input type="number" id="base-y" value="0" step="0.1">
-            <input type="number" id="base-z" value="0" step="0.1">
+            <input type="number" id="base-x" value="0" min="-2000" max="2000" step="0.1">
+            <input type="number" id="base-y" value="0" min="-2000" max="2000" step="0.1">
+            <input type="number" id="base-z" value="0" min="-2000" max="2000" step="0.1">
         </div>
         <div>
             <label>Vehículo (X, Y, Z):</label>
-            <input type="number" id="vehicle-x" value="5" step="0.1">
-            <input type="number" id="vehicle-y" value="0" step="0.1">
-            <input type="number" id="vehicle-z" value="5" step="0.1">
-        </div>
-        <div>
-            <label>Boids:</label>
-            <input type="number" id="boids-count" value="1" min="1" max="20">
-            <button id="update-boids">Actualizar</button>
+            <input type="number" id="vehicle-x" value="5" min="-2000" max="2000" step="0.1">
+            <input type="number" id="vehicle-y" value="0" min="-2000" max="2000" step="0.1">
+            <input type="number" id="vehicle-z" value="5" min="-2000" max="2000" step="0.1">
         </div>
         <div id="boids-positions">
             <h4>Posiciones de los Boids:</h4>

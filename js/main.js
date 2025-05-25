@@ -13,10 +13,11 @@ class Simulation {
         };
         this.boidsConfig = {
             count: 2,
-            separation: 5,
+            separation: 10,
             alignment: 0.1,
             cohesion: 0.5,
-            maxSpeed: 3
+            maxSpeed: 3,
+            protectRange: 10
         };
         this.init();
     }
@@ -145,9 +146,22 @@ class Simulation {
         });
 
         // Actualizar número de boids
-        document.getElementById('update-boids').addEventListener('click', () => {
-            const newCount = parseInt(document.getElementById('boids-count').value);
-            this.boids.updateBoidsCount(newCount);
+        //document.getElementById('update-boids').addEventListener('click', () => {
+        //    const newCount = parseInt(document.getElementById('boids-count').value);
+        //    this.boids.updateBoidsCount(newCount);
+        //});
+
+        // Actualizar configuración de boids
+        document.getElementById('update-boids-config').addEventListener('click', () => {
+            this.boidsConfig = {
+                count: parseInt(document.getElementById('boids-count').value),
+                separation: parseFloat(document.getElementById('boids-separation').value),
+                alignment: parseFloat(document.getElementById('boids-alignment').value),
+                cohesion: parseFloat(document.getElementById('boids-cohesion').value),
+                maxSpeed: parseFloat(document.getElementById('boids-maxSpeed').value),
+                protectRange: parseFloat(document.getElementById('boids-protectRange').value)
+            };
+            this.boids.updateConfig(this.boidsConfig);
         });
 
         // Manejar redimensionamiento de ventana

@@ -12,12 +12,13 @@ export class myBoid extends THREE.Mesh  {
             alignment: config.alignment || 0.10,
             cohesion: config.cohesion || 0.10,
             maxSpeed: config.maxSpeed || 0.0005,
-            protectRange: 5
+            protectRange: config.protectRange || 5,
         };
 
         this.position.set(
-            (Math.random() - 0.5) * 20,0,
-            (Math.random() - 0.5) * 20
+            config.protectRange + (Math.random() - 0.5) * 20,
+            0,
+            config.protectRange + (Math.random() - 0.5) * 20
         );
         
         this.velocity = new THREE.Vector3(0,0,0);
@@ -48,7 +49,7 @@ export class myBoid extends THREE.Mesh  {
                 {
                         
                     const distance = this.position.distanceTo(other.position);
-                    console.log("other "+other.id+" dis "+distance)
+                    //console.log("other "+other.id+" dis "+distance)
                     if (distance < this.config.protectRange) {
                     //separation.sub(other.position).sub(this.position).normalize();
                     separation.add(this.position).sub(other.position);
@@ -80,9 +81,9 @@ export class myBoid extends THREE.Mesh  {
                 }
             });
             cohesion.divideScalar(neighboring_boids);
-            console.log(this.id+" separation "+neighboring_boids+" cohesion"+cohesion.x +" "+cohesion.y+" "+cohesion.z)
+            //console.log(this.id+" separation "+neighboring_boids+" cohesion"+cohesion.x +" "+cohesion.y+" "+cohesion.z)
             cohesion.sub(this.position);
-            console.log(this.id+" separation"+separation.x +" "+separation.y+" "+separation.z+"cohesion"+cohesion.x +" "+cohesion.y+" "+cohesion.z)
+            //console.log(this.id+" separation"+separation.x +" "+separation.y+" "+separation.z+"cohesion"+cohesion.x +" "+cohesion.y+" "+cohesion.z)
             // Aplicar fuerzas
             this.velocity.add(separation.multiplyScalar(this.config.separation));
             //this.velocity.add(alignment.multiplyScalar(this.config.alignment));

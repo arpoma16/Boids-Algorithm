@@ -10,8 +10,7 @@ export class Boids {
             alignment: config.alignment || 0.10,
             cohesion: config.cohesion || 0.10,
             maxSpeed: config.maxSpeed || 0.0005,
-            protectRange: 5
-
+            protectRange: config.protectRange || 5,
         };
         this.createBoids();
     }
@@ -24,7 +23,7 @@ export class Boids {
         }
     }
 
-    updateBoidsCount(newCount) {
+    updateConfig(newParameters) {
         // Eliminar boids existentes
         this.boids.forEach(boid => {
             this.scene.remove(boid);
@@ -32,7 +31,7 @@ export class Boids {
         this.boids = [];
 
         // Crear nuevos boids
-        this.config.count = newCount;
+        this.config= {...this.config,...newParameters};
         this.createBoids();
     }
 
