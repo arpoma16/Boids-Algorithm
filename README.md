@@ -2,6 +2,8 @@
 
 Esta aplicación web muestra una simulación 3D con tres vistas diferentes y un algoritmo de Boids para simulación de comportamiento de enjambre.
 
+preview: https://arpoma16.github.io/Boids-Algorithm/
+
 ## Características
 
 - Vista principal 3D con controles orbitales
