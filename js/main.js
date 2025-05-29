@@ -1,6 +1,19 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js";
+import Stats from 'https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/libs/stats.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 import { Boids } from './boids.js';
+
+// add Stats to the top right corner of the screen
+const container = document.getElementById( 'container' );
+const stats = new Stats();
+stats.showPanel(0); // 0: fps, 1: ms, 2: mb
+
+stats.dom.style.position = 'absolute';
+stats.dom.style.top = '0px';
+stats.dom.style.right = '0px';    
+stats.dom.style.left = ''; // Elimina la propiedad que lo fuerza a la izquierda 
+
+container.appendChild(stats.dom);
 
 class Simulation {
     constructor() {
@@ -191,6 +204,8 @@ class Simulation {
 
         // Actualizar panel de boids
         this.updateBoidsPanelValues();
+
+        stats.update();
 
         Object.keys(this.cameras).forEach(id => {
             this.renderers[id].render(this.scene, this.cameras[id]);
